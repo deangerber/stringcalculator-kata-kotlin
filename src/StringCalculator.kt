@@ -8,7 +8,16 @@ object StringCalculator {
   }
 
   private fun sumWithKnownDelimiter(input: String, delimiter: String = "[,\n]"): Int {
-    return input.split(delimiter.toRegex()).map { it.toInt() }.sum()
+    val numbers = input
+        .split(delimiter.toRegex())
+        .map { it.toInt() }
+
+    val negativeNumbers = numbers.filter { it < 0 }
+
+    return when (negativeNumbers.isEmpty()) {
+      true -> numbers.sum()
+      false -> throw NegativeNumbersNotAllowedException("Negative numbers not allowed: $negativeNumbers")
+    }
   }
 
   private fun sumWithCustomDelimiter(input: String): Int {

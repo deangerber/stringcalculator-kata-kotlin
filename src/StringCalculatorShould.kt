@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 class StringCalculatorShould {
 
@@ -31,5 +32,10 @@ class StringCalculatorShould {
   @Test
   fun `return the sum of a string of numbers seperated by custom delimiter`() {
     assertEquals(6, StringCalculator.add("//;\n1;2;3"))
+  }
+
+  @Test
+  fun `throw an exception if given a string that contains any negative numbers`() {
+    assertFailsWith(NegativeNumbersNotAllowedException::class, "Negative numbers not allowed: -2 -4") { StringCalculator.add("//;\n1;-2;3;-4") }
   }
 }
