@@ -48,4 +48,9 @@ class StringCalculatorShould {
   fun `return the sum of a string of numbers seperated by multi length custom delimiter`() {
     assertEquals(6, StringCalculator.add("//[***]\n1***2***3"))
   }
+
+  @Test
+  fun `return the sum of a string of numbers seperated by multiple single custom delimiters`() {
+    assertEquals(6, StringCalculator.add("//[*][%]\n1*2%3"))
+  }
 }

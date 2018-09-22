@@ -26,10 +26,12 @@ object StringCalculator {
   private fun sumWithCustomDelimiter(input: String): Int {
     val pieces = input.split("\n")
     val numbers = pieces.last()
-    val delimiter = pieces
+    val delimiters = pieces
         .first()
         .removePrefix("//")
         .removeSurrounding("[", "]")
-    return sumWithKnownDelimiter(numbers, Pattern.quote(delimiter))
+        .split("][")
+        .joinToString("|") { Pattern.quote(it) }
+    return sumWithKnownDelimiter(numbers, delimiters)
   }
 }
