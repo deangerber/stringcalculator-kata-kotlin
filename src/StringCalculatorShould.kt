@@ -38,4 +38,9 @@ class StringCalculatorShould {
   fun `throw an exception if given a string that contains any negative numbers`() {
     assertFailsWith(NegativeNumbersNotAllowedException::class, "Negative numbers not allowed: -2 -4") { StringCalculator.add("//;\n1;-2;3;-4") }
   }
+
+  @Test
+  fun `return the sum of a string of numbers ignoring any numbers over a thousand`() {
+    assertEquals(3, StringCalculator.add("//;\n1;2;1001"))
+  }
 }

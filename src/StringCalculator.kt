@@ -11,6 +11,7 @@ object StringCalculator {
     val numbers = input
         .split(delimiter.toRegex())
         .map { it.toInt() }
+        .filter { it <= 1000 }
 
     val negativeNumbers = numbers.filter { it < 0 }
 
