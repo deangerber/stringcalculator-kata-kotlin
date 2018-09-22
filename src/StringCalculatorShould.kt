@@ -17,4 +17,9 @@ class StringCalculatorShould {
   fun `return the sum of a string of numbers seperated by a comma`() {
     assertEquals(3, StringCalculator.add("1,2"))
   }
+
+  @Test
+  fun `return the sum of a string of many numbers seperated by a comma`() {
+    assertEquals(10, StringCalculator.add("1,2,3,4"))
+  }
 }
