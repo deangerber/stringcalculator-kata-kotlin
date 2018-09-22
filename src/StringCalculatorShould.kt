@@ -12,4 +12,9 @@ class StringCalculatorShould {
   fun `return the int of a number that is passed in as a string`() {
     assertEquals(1, StringCalculator.add("1"))
   }
+
+  @Test
+  fun `return the sum of a string of numbers seperated by a comma`() {
+    assertEquals(3, StringCalculator.add("1,2"))
+  }
 }
