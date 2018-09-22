@@ -1,3 +1,5 @@
+import java.util.regex.Pattern
+
 object StringCalculator {
   fun add(input: String): Int {
     if (input.isEmpty()) return 0
@@ -24,7 +26,10 @@ object StringCalculator {
   private fun sumWithCustomDelimiter(input: String): Int {
     val pieces = input.split("\n")
     val numbers = pieces.last()
-    val delimiter = pieces.first().removePrefix("//")
-    return sumWithKnownDelimiter(numbers, delimiter)
+    val delimiter = pieces
+        .first()
+        .removePrefix("//")
+        .removeSurrounding("[", "]")
+    return sumWithKnownDelimiter(numbers, Pattern.quote(delimiter))
   }
 }
