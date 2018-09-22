@@ -27,4 +27,9 @@ class StringCalculatorShould {
   fun `return the sum of a string of numbers seperated by a comma and newline`() {
     assertEquals(6, StringCalculator.add("1,2\n3"))
   }
+
+  @Test
+  fun `return the sum of a string of numbers seperated by custom delimiter`() {
+    assertEquals(6, StringCalculator.add("//;\n1;2;3"))
+  }
 }
